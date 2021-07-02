@@ -36,10 +36,16 @@ class HornedBeasts extends React.Component {
     render() {
         return (
             <>
-                <SelectedBeast show={this.state.show} changeState={this.changeState} title={this.props.title} description={this.props.description} url={this.props.url}></SelectedBeast>
-                <Card style={{ width: '18rem' }} onClick={this.changeState}>
-                    <Card.Img variant="top" src={this.props.url} />
-                    <Card.Body>
+                <SelectedBeast 
+                    show={this.state.show}
+                    changeState={this.changeState}
+                    title={this.props.title}
+                    description={this.props.description}
+                    url={this.props.url} />
+
+                <Card style={{ width: '18rem' }} className='cards'>
+                    <Card.Img variant="top" src={this.props.url} className='cardImg' onClick={this.changeState}/>
+                    <Card.Body onClick={this.changeState}>
                         <Card.Title>{this.props.title}</Card.Title>
                         <Card.Text>
                             {this.props.description}
@@ -48,8 +54,9 @@ class HornedBeasts extends React.Component {
                             {this.state.numberOFvotes}
                         </Card.Text>
                     </Card.Body>
+                    <Button onClick={this.increaseVotes} className='cardButton'>Vote</Button>
                 </Card>
-                <Button onClick={this.increaseVotes}>Vote</Button>
+                
             </>
         )
     }
